@@ -26,17 +26,17 @@ const images = [
 ];
 
 const gallery = document.querySelector(".gallery");
-console.log(gallery);
+const fragment = document.createDocumentFragment();
 
-const page = images.map((image) => {
-  const liEl = document.createElement("li");
-  const imgEl = document.createElement("img");
+images.forEach(({ url, alt }) => {
+  const li = document.createElement("li");
+  const img = document.createElement("img");
 
-  imgEl.src = image.url;
-  imgEl.alt = image.alt;
+  img.src = url;
+  img.alt = alt;
+  img.width = 250;
 
-  liEl.appendChild(imgEl);
-  return liEl;
+  li.append(img);
+  fragment.append(li);
 });
-gallery.append(...page);
-console.log(page);
+gallery.append(fragment);
